@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nginx-job    
+  namespace: nginx
+spec:
+  completions: 1
+  parallelism: 1
+  template: 
+    metadata:
+      name: nginx-job-pod
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: demo
+        image: busybox
+        command: ["sh", "-c", "echo Hello K8s Job && sleep 5"]
+      restartPolicy: Never
