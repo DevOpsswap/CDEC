@@ -4,8 +4,8 @@ metadata:
   name: nginx-job    
   namespace: nginx
 spec:
-  completions: 1
-  parallelism: 1
+  completions: 2
+  parallelism: 2
   template: 
     metadata:
       name: nginx-job-pod
