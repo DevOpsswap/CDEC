@@ -4,7 +4,7 @@ metadata:
   name: nginx-job    
   namespace: nginx
 spec:
-  completions: 2
+  completions: 1
   parallelism: 2
   template: 
     metadata:
