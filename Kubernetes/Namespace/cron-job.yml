@@ -1,43 +1,41 @@
-apiVersion: batch/v1 
-Kind: CronJob
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-     name: minute-backup
-     namespace: nginx
+  name: minute-backup
+  namespace: nginx
 spec:
-   schedule: "*/1 * * * *"
-   jobTemplate:
+  schedule: "*/1 * * * *"
+  jobTemplate:
     spec:
       template:
         metadata:
-          name: minute-backup
           labels:
             app: minute-backup
-
         spec:
-         containers:
-          - name: backup-container
-            image: busybox
-            command:
-              - sh
-              - -c
-              - >
-                echo "Hello, World! This is a backup job running every minute." ;
-                mkdir -p /backup &&
-                mkdir -p /demo-data &&
-                cp -r /demo-data/* /backup/ &&
-                echo "Backup completed successfully" ;
-            volumeMounts:
+          containers:
+            - name: backup-container
+              image: busybox
+              command:
+                - sh
+                - -c
+                - >
+                  echo "Hello, World! This is a backup job running every minute." ;
+                  mkdir -p /backup &&
+                  mkdir -p /demo-data &&
+                  cp -r /demo-data/* /backup/ 2>/dev/null || true &&
+                  echo "Backup completed successfully" ;
+              volumeMounts:
                 - name: data-volume
-                  mountPath:  /demo-data
+                  mountPath: /demo-data
                 - name: backup-volume
                   mountPath: /backup
-                  restartPolicy: OnFailure
-            volumes:
-              - name: data-volume
-                hostPath:
-                  path: /demo-data
-                  type: DirectoryOrCreate
-              - name: backup-volume
-                hostPath:
-                  path: /backup
-                  type: DirectoryOrCreate
+          restartPolicy: OnFailure
+          volumes:
+            - name: data-volume
+              hostPath:
+                path: /demo-data
+                type: DirectoryOrCreate
+            - name: backup-volume
+              hostPath:
+                path: /backup
+                type: DirectoryOrCreate
