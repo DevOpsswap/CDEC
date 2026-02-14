@@ -15,8 +15,29 @@ spec:
 
       spec:
        containers:
-        - name: demo
+        - name: backup-container
           image: busybox
-          command: ["sh", "-c", "date; echo CronJob backup running"]
-          restartPolicy: OnFailure
-  
+          command:
+            - sh
+            - -c
+            - >
+              echo "Hello, World! This is a backup job running every minute." ;
+              mkdir -p /backup &&
+              mkdir -p /demo-data &&
+              cp -r /demo-data/* /backup/ &&
+              echo "Backup completed successfully." ;
+            volumeMounts:
+              - name: data-volume
+              mountPath:  /demo-data
+              - name: backup-volume
+              mountPath: /backup
+            restartPolicy: OnFailure
+            volumes:
+              - name: data-volume
+                hostPath:
+                  path: /demo-data
+                  type: DirectoryOrCreate
+              - name: backup-volume
+                hostPath:
+                  path: /backup
+                  type: DirectoryOrCreate
