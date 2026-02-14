@@ -25,7 +25,7 @@ spec:
               mkdir -p /backup &&
               mkdir -p /demo-data &&
               cp -r /demo-data/* /backup/ &&
-              echo "Backup completed successfully." ;
+              echo "Backup completed successfully" ;
             volumeMounts:
               - name: data-volume
               mountPath:  /demo-data
