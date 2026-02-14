@@ -13,25 +13,25 @@ spec:
           labels:
             app: minute-backup
 
-      spec:
-       containers:
-        - name: backup-container
-          image: busybox
-          command:
-            - sh
-            - -c
-            - >
-              echo "Hello, World! This is a backup job running every minute." ;
-              mkdir -p /backup &&
-              mkdir -p /demo-data &&
-              cp -r /demo-data/* /backup/ &&
-              echo "Backup completed successfully" ;
+        spec:
+         containers:
+          - name: backup-container
+            image: busybox
+            command:
+              - sh
+              - -c
+              - >
+                echo "Hello, World! This is a backup job running every minute." ;
+                mkdir -p /backup &&
+                mkdir -p /demo-data &&
+                cp -r /demo-data/* /backup/ &&
+                echo "Backup completed successfully" ;
             volumeMounts:
-              - name: data-volume
-              mountPath:  /demo-data
-              - name: backup-volume
-              mountPath: /backup
-            restartPolicy: OnFailure
+                - name: data-volume
+                  mountPath:  /demo-data
+                - name: backup-volume
+                  mountPath: /backup
+                  restartPolicy: OnFailure
             volumes:
               - name: data-volume
                 hostPath:
