@@ -15,14 +15,14 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - mountPath: /var/www/html
-          name: my-volume
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: my-volume
       volumes:
         - name: my-volume
           persistentVolumeClaim:
-          claimName: local-pvc
+            claimName: local-pvc
