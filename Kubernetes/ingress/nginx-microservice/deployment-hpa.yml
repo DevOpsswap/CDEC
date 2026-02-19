@@ -37,6 +37,8 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: my-nginx-hpa
+  labels:
+    app: my-nginx-app
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
