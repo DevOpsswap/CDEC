@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment    
+  name: note-app-deployment
+  labels:
+    app: notes-app   
   namespace: nginx
 spec:
-  replicas: 3 
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: notes-app
   template:
     metadata:
-      name: nginx-deployment-pod
       labels:
-        app: nginx
+        app: notes-app
     spec:
       containers:
         - name: nginx
