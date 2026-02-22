@@ -6,7 +6,7 @@ metadata:
     app: mysql
   namespace: mysql
 spec:
-  serviceName: "mysql"
+  serviceName: "mysql-service"
   replicas: 3
   selector:
     matchLabels:
