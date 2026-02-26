@@ -28,10 +28,4 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "250m"
-          volumeMounts:
-            - mountPath: /var/www/html
-              name: my-volume
-      volumes:
-        - name: my-volume
-          persistentVolumeClaim:
-            claimName: local-pvc
+        
