@@ -4,8 +4,8 @@ metadata:
   name: apache-manager-binding
   namespace: apache
 subjects:
-- kind: user  
-  name: apache-user
+- kind: serviceAccount
+  name: apache-service-account
   apiGroup: rbac.authorization.k8s.io 
   namespace: apache
 roleRef:
