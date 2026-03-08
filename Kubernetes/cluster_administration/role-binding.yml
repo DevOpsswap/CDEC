@@ -4,7 +4,7 @@ metadata:
   name: apache-manager-rolebinding
   namespace: apache
 subjects:
-- kind: user
+- kind: User
   name: apache-user
   apiGroup: ""
   namespace: apache
