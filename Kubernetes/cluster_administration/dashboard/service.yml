@@ -1,14 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dashboard-service
+  name: kubernetes-dashboard
   namespace: kubernetes-dashboard
 spec:
   selector:
     k8s-app: kubernetes-dashboard
   ports:
   - port: 443
-    targetPort: 8001
-selector:
-    k8s-app: kubernetes-dashboard
-    type: LoadBalance
+    targetPort: 8443
+  type: LoadBalancer
