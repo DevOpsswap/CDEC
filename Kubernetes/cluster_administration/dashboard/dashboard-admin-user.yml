@@ -16,5 +16,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: admin-user
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: ""
   namespace: kubernetes-dashboard
