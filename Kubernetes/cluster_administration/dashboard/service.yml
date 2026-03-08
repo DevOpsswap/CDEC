@@ -4,6 +4,8 @@ metadata:
   name: dashboard-service
   namespace: kubernetes-dashboard
 spec:
+  selector:
+    k8s-app: kubernetes-dashboard
   ports:
   - port: 443
     targetPort: 8001
