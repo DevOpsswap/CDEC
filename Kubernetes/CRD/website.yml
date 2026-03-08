@@ -1,0 +1,8 @@
+apiVersion: devops.com/v1
+kind: Website
+metadata:
+  name: my-website
+  namespace: default
+spec:
+  domain: example.com
+  replicas: 3
